@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { getPrice } from "./function";
 
-export default function Hero() {
+export default async function Hero() {
+
 
   return (
     <div className="relative isolate overflow-hidden bg-orange-400">
@@ -56,6 +58,9 @@ export default function Hero() {
           <p className="mt-6 text-lg leading-8 text-orange-600 font-semibold">
             $MEOW is a ERC20 token created in the Zilliqa Ecosystem on 6th April
             2024
+          </p>
+          <p className="mt-6 text-lg leading-8 text-white font-semibold">
+            {`Current Price is ${await getPrice()} ZIL per $MEOW`}
           </p>
           <div className="mt-10 flex items-center gap-x-6">
             <Link
