@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getPrice } from "./function";
+export const fetchCache = 'force-no-store'
 
 export default async function Hero() {
 
