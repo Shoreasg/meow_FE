@@ -1,10 +1,12 @@
 import Link from "next/link";
-import { getPrice } from "./function";
-export const fetchCache = 'force-no-store'
-export const dynamic = 'force-dynamic'
+import { getPairs, getPrice, getZILprice } from "./function";
+export const fetchCache = "force-no-store";
+export const dynamic = "force-dynamic";
 
 export default async function Hero() {
-
+  const pairs = await getPairs();
+  const price = await getPrice();
+  const zilPrice = await getZILprice();
 
   return (
     <div className="relative isolate overflow-hidden bg-orange-400">
@@ -50,20 +52,30 @@ export default async function Hero() {
         />
       </div>
       <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
-        <div className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
+        <div className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl">
           <p className=" font-extrabold font-mono text-orange-600 text-6xl">
             $MEOW
           </p>
-          <h1 className="mt-10 text-4xl font-bold tracking-tight text-white sm:text-6xl">
+          <h1 className="mt-10 text-2xl font-bold tracking-tight text-white sm:text-6xl">
             WELCOME TO MEOWWWW FAM!
           </h1>
           <p className="mt-6 text-lg leading-8 text-orange-600 font-semibold">
             $MEOW is a ERC20 token created in the Zilliqa Ecosystem on 6th April
             2024
           </p>
-          <p className="mt-6 text-lg leading-8 text-white font-semibold">
-            {`Current Price is ${await getPrice()} ZIL per $MEOW`}
+          <p className="mt-6 text-base leading-8 text-white font-semibold">
+            {`Current Price is ${price} ZIL per $MEOW`}
           </p>
+          <p className="text-base leading-8 text-white font-semibold">
+            {`MarketCap in ZIL: ${Math.trunc(price * 6969696969)} ZIL`}
+          </p>
+          <p className="text-base leading-8 text-white font-semibold">
+            {`MarketCap in USD: $${Math.trunc(price * 6969696969 * zilPrice)}`}
+          </p>
+          <div className="mt-6 text-base leading-8 text-white font-semibold">
+            Type of pairs in PlunderSwap
+            {pairs}
+          </div>
           <div className="mt-10 flex items-center gap-x-6">
             <Link
               href="https://twitter.com/MEOWZILLIQA"
