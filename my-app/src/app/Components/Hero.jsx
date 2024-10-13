@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPairs, getPrice, getZILprice } from "./function";
+import { getLogs, getPairs, getPrice, getZILprice } from "./function";
 export const fetchCache = "force-no-store";
 export const dynamic = "force-dynamic";
 

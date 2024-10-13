@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import Link from "next/link";
 
-const rpcURL = "https://evm-api-filters.zilliqa.com/";
+const rpcURL = "https://api.zilliqa.com";
 
 const provider = new ethers.JsonRpcProvider(rpcURL);
 
@@ -112,6 +112,20 @@ export async function getPairs() {
   });
 
   return mapPairs;
+}
+
+export async function getLogs(){
+
+  const latestBlockNumber = await provider.getBlockNumber();
+  const fromBlockNumber = BigInt(latestBlockNumber - 100);
+  const hexlify = ethers.hexlify(ethers.toQuantity(fromBlockNumber))
+
+  const filter = {
+    fromBlock: hexlify,
+    toBlock: "latest"
+  }
+  const logs = await provider.getLogs(filter)
+
 }
 
 
