@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getLogs, getPairs, getPrice, getZILprice } from "./function";
+import Image from "next/image";
 export const fetchCache = "force-no-store";
 export const dynamic = "force-dynamic";
 
@@ -42,19 +43,27 @@ export default async function Hero() {
         </div>
         <div className="flex flex-row justify-center items-center w-full">
         <div className="mt-10 flex items-center text-center gap-x-6">
+
           <Link
             href="https://twitter.com/MEOWZILLIQA"
             target="_blank"
             className="text-sm font-semibold leading-6 text-orange-600 underline"
           >
-            Twitter
+          <Image src="/x.png" width={30} height={30} alt="x logo"/>
           </Link>
           <Link
             href="https://t.me/+Lvf8CJyAo2gzZmJl"
             target="_blank"
             className="text-sm font-semibold leading-6 text-orange-600 underline"
           >
-            Telegram
+          <Image src="/Telegram.png" width={30} height={30} alt="telegram logo"/>
+          </Link>
+          <Link
+            href="https://www.geckoterminal.com/zilliqa-evm/pools/0x59f21561533fadaddd50ea7200b6f14cf42e2a01"
+            target="_blank"
+            className="text-sm font-semibold leading-6 text-orange-600 underline"
+          >
+          <Image src="/geckoterminal_icon.png" width={30} height={30} alt="geckoTerminal logo"/>
           </Link>
         </div>
         </div>
